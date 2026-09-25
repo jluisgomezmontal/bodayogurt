@@ -11,7 +11,7 @@ export type Lugar = Seccion & {
 export type Icono = "iglesia" | "anillos" | "copas" | "cena" | "musica" | "luna" | "foto" | "pastel";
 
 export type Invitacion = {
-  sitio: { url?: string; titulo: string; descripcion: string };
+  sitio: { url?: string; titulo: string; descripcion: string; imagenCompartir: string; icono: string };
   novios: { ella: string; el: string; iniciales: string };
   fecha: string;
   sobre?: Seccion & { texto: string; boton: string };

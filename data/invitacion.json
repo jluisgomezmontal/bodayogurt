@@ -2,7 +2,9 @@
   "sitio": {
     "url": "https://tu-invitacion.vercel.app",
     "titulo": "Neli & José · Nuestra Boda",
-    "descripcion": "Nos casamos el 31 de octubre de 2026. Acompáñanos a celebrar este día tan especial."
+    "descripcion": "Nos casamos el 31 de octubre de 2026. Acompáñanos a celebrar este día tan especial.",
+    "imagenCompartir": "/images/compartir.jpg",
+    "icono": "/images/icono.png"
   },
   "novios": {
     "ella": "Neli",

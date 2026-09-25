@@ -19,11 +19,20 @@ export const metadata: Metadata = {
   metadataBase: inv.sitio.url ? new URL(inv.sitio.url) : undefined,
   title: inv.sitio.titulo,
   description: inv.sitio.descripcion,
+  icons: {
+    icon: inv.sitio.icono,
+    apple: inv.sitio.icono,
+  },
   openGraph: {
     title: inv.sitio.titulo,
     description: inv.sitio.descripcion,
-    images: ["/images/floral.jpg"],
+    images: [{ url: inv.sitio.imagenCompartir, width: 1200, height: 630 }],
     type: "website",
+    locale: "es_MX",
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: [inv.sitio.imagenCompartir],
   },
 };
 
