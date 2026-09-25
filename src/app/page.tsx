@@ -1,6 +1,6 @@
 import datos from "@data/invitacion.json";
 import { visible, type Invitacion, type Lugar } from "@/types/invitacion";
-import { Adorno, Reveal, Separador } from "@/components/Decoracion";
+import { Adorno, Reveal, Separador, type PosicionAdorno, type VarianteAdorno } from "@/components/Decoracion";
 import {
   Icono,
   IconoFlecha,
@@ -33,9 +33,14 @@ function partesFecha(iso: string) {
   return { larga, corta };
 }
 
-function Evento({ datos, icono }: { datos: Lugar; icono: "iglesia" | "copas" }) {
+function Evento({ datos, icono, adorno }: {
+  datos: Lugar;
+  icono: "iglesia" | "copas";
+  adorno?: [VarianteAdorno, PosicionAdorno];
+}) {
   return (
     <Reveal as="section" className="seccion">
+      {adorno && <Adorno variante={adorno[0]} posicion={adorno[1]} />}
       <Icono nombre={icono} className="evento-icono" />
       <p className="etiqueta">{datos.titulo}</p>
       <p className="evento-hora">{datos.hora}</p>
@@ -90,7 +95,7 @@ export default function Pagina() {
       {/* Cuenta regresiva */}
       {visible(cuentaRegresiva) && (
         <Reveal as="section" className="seccion">
-          <Adorno posicion="sup" />
+          <Adorno variante="ramo" posicion="sup-der" />
           <p className="etiqueta">{cuentaRegresiva.titulo}</p>
           <CuentaRegresiva fecha={inv.fecha} />
           <p className="fecha-larga">{fecha.larga}</p>
@@ -112,14 +117,14 @@ export default function Pagina() {
 
       <Separador />
 
-      {visible(ceremonia) && <Evento datos={ceremonia} icono="iglesia" />}
+      {visible(ceremonia) && <Evento datos={ceremonia} icono="iglesia" adorno={["rama", "sup-izq"]} />}
       {visible(ceremonia) && visible(recepcion) && <Separador />}
       {visible(recepcion) && <Evento datos={recepcion} icono="copas" />}
 
       {/* Itinerario */}
       {visible(itinerario) && (
         <Reveal as="section" className="seccion">
-          <Adorno posicion="sup" />
+          <Adorno variante="nube" posicion="sup-der" />
           <h2 className="titulo-script">{itinerario.titulo}</h2>
           <ol className="linea-tiempo">
             {itinerario.eventos.map((e) => (
@@ -138,6 +143,7 @@ export default function Pagina() {
       {/* Padres y padrinos */}
       {visible(familia) && (
         <Reveal as="section" className="seccion">
+          <Adorno variante="flor" posicion="inf-izq" />
           <h2 className="titulo">{familia.titulo}</h2>
           <Separador />
           <div className="familia-grupo">
@@ -170,7 +176,7 @@ export default function Pagina() {
       {/* Código de vestimenta */}
       {visible(vestimenta) && (
         <Reveal as="section" className="seccion">
-          <Adorno posicion="inf" />
+          <Adorno variante="rama" posicion="inf-der" />
           <p className="etiqueta">{vestimenta.titulo}</p>
           <p className="vestimenta-tipo">{vestimenta.tipo}</p>
           <div className="vestimenta-figuras">

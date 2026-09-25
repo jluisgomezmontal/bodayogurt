@@ -145,7 +145,7 @@ a {
   border-color: var(--dorado-osc);
 }
 
-/* ---------- Adornos florales (SVG completo en las esquinas) ---------- */
+/* ---------- Adornos florales (SVG en las esquinas) ---------- */
 .adorno {
   position: absolute;
   pointer-events: none;
@@ -154,23 +154,94 @@ a {
   height: 210px;
 }
 
-.adorno-sup {
+.adorno svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.adorno.sup-der {
   top: 0;
   right: 0;
 }
 
-.adorno-inf {
+.adorno.sup-izq {
+  top: 0;
+  left: 0;
+  transform: scaleX(-1);
+}
+
+.adorno.inf-der {
+  bottom: 0;
+  right: 0;
+  transform: scaleY(-1);
+}
+
+.adorno.inf-izq {
   bottom: 0;
   left: 0;
-  transform: rotate(180deg);
+  transform: scale(-1, -1);
 }
 
-.seccion:has(.adorno-sup) {
-  padding-top: 200px;
+.seccion:has(.adorno.sup-der, .adorno.sup-izq) {
+  padding-top: 190px;
 }
 
-.seccion:has(.adorno-inf) {
-  padding-bottom: 150px;
+.seccion:has(.adorno.inf-der, .adorno.inf-izq) {
+  padding-bottom: 170px;
+}
+
+/* Animación al hacer scroll: el tallo se dibuja, luego brotan hojas y flores */
+.adorno .tallos path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s;
+}
+
+.adorno .brotes {
+  opacity: 0;
+  transform: scale(0.92);
+  transform-origin: 200px 0;
+  transition: opacity 1.4s ease 0.9s, transform 1.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.9s;
+}
+
+.reveal.visible .adorno .tallos path {
+  stroke-dashoffset: 0;
+}
+
+.reveal.visible .adorno .brotes {
+  opacity: 1;
+  transform: none;
+}
+
+/* Vaivén muy suave, como movido por el aire */
+.adorno .mecer {
+  transform-origin: 200px 0;
+  animation: mecer 9s ease-in-out infinite alternate;
+}
+
+@keyframes mecer {
+  from {
+    transform: rotate(-1.2deg);
+  }
+  to {
+    transform: rotate(1.2deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .adorno .mecer {
+    animation: none;
+  }
+  .adorno .tallos path {
+    stroke-dashoffset: 0;
+    transition: none;
+  }
+  .adorno .brotes {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 .seccion > *:not(.adorno) {
