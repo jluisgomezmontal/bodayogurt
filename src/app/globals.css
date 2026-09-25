@@ -1,0 +1,851 @@
+:root {
+  --crema: #f5eee3;
+  --marfil: #fbf7f0;
+  --arena: #e6d5be;
+  --dorado: #b8935a;
+  --dorado-osc: #9c7a45;
+  --chocolate: #5a3a22;
+  --texto: #4a3b2f;
+  --texto-suave: #7a6654;
+  --linea: rgba(184, 147, 90, 0.45);
+  --floral: url("/images/floral.jpg");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #ece2d3;
+  color: var(--texto);
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.bloqueado {
+  overflow: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+/* ---------- Contenedor principal ---------- */
+.invitacion {
+  position: relative;
+  max-width: 480px;
+  margin: 0 auto;
+  background-color: var(--crema);
+  /* textura de papel sutil */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.25 0 0 0 0 0.15 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  box-shadow: 0 0 60px rgba(90, 58, 34, 0.12);
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.seccion {
+  position: relative;
+  padding: 72px 28px;
+  text-align: center;
+}
+
+.titulo {
+  font-family: var(--font-serif), serif;
+  font-weight: 400;
+  font-size: 1.95rem;
+  line-height: 1.2;
+  color: var(--chocolate);
+  margin: 0 0 8px;
+  letter-spacing: 0.02em;
+}
+
+.titulo-script {
+  font-family: var(--font-script), cursive;
+  font-weight: 400;
+  font-size: 2.6rem;
+  line-height: 1.2;
+  color: var(--dorado-osc);
+  margin: 0 0 12px;
+}
+
+.etiqueta {
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--dorado-osc);
+  margin: 0 0 10px;
+}
+
+.parrafo {
+  font-family: var(--font-serif), serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--texto);
+  max-width: 340px;
+  margin: 0 auto;
+}
+
+.boton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 26px;
+  border: 1px solid var(--dorado);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--chocolate);
+  font-family: var(--font-sans), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.boton:hover,
+.boton:focus-visible {
+  background: var(--chocolate);
+  border-color: var(--chocolate);
+  color: var(--marfil);
+}
+
+.boton svg {
+  width: 16px;
+  height: 16px;
+}
+
+.boton-lleno {
+  background: var(--chocolate);
+  border-color: var(--chocolate);
+  color: var(--marfil);
+}
+
+.boton-lleno:hover,
+.boton-lleno:focus-visible {
+  background: var(--dorado-osc);
+  border-color: var(--dorado-osc);
+}
+
+/* ---------- Adornos florales (recortes de la imagen) ---------- */
+.adorno {
+  position: absolute;
+  pointer-events: none;
+  background-image: var(--floral);
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+
+.adorno-sup {
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 180px;
+  background-size: 400px auto;
+  background-position: right top;
+  -webkit-mask-image: radial-gradient(ellipse at top right, #000 45%, transparent 72%);
+  mask-image: radial-gradient(ellipse at top right, #000 45%, transparent 72%);
+}
+
+.adorno-inf {
+  bottom: 0;
+  left: 0;
+  width: 170px;
+  height: 250px;
+  background-size: 440px auto;
+  background-position: right bottom;
+  transform: scaleX(-1);
+  -webkit-mask-image: radial-gradient(ellipse at bottom right, #000 40%, transparent 72%);
+  mask-image: radial-gradient(ellipse at bottom right, #000 40%, transparent 72%);
+}
+
+.seccion:has(.adorno-sup) {
+  padding-top: 150px;
+}
+
+.seccion > *:not(.adorno) {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- Separador ---------- */
+.separador {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 18px auto;
+  color: var(--dorado);
+}
+
+.separador::before,
+.separador::after {
+  content: "";
+  height: 1px;
+  width: 64px;
+  background: linear-gradient(90deg, transparent, var(--dorado));
+}
+
+.separador::after {
+  transform: scaleX(-1);
+}
+
+.separador svg {
+  width: 26px;
+  height: 26px;
+}
+
+/* ---------- Aparición al hacer scroll ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---------- Sobre de apertura ---------- */
+.sobre {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  padding: 32px;
+  text-align: center;
+  background-color: var(--crema);
+  background-image: var(--floral);
+  background-size: cover;
+  background-position: 70% center;
+  transition: opacity 1s ease, visibility 1s;
+}
+
+.sobre::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 40% 50%, rgba(245, 238, 227, 0.9) 28%, rgba(245, 238, 227, 0.2) 80%);
+}
+
+.sobre > * {
+  position: relative;
+}
+
+.sobre.abierto {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.sello {
+  display: grid;
+  place-items: center;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #7a5234, var(--chocolate) 70%);
+  color: #e9d3ae;
+  font-family: var(--font-script), cursive;
+  font-size: 2.1rem;
+  box-shadow: 0 8px 24px rgba(90, 58, 34, 0.35), inset 0 0 0 5px rgba(233, 211, 174, 0.25);
+}
+
+.sobre-texto {
+  font-family: var(--font-serif), serif;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--chocolate);
+  margin: 0;
+}
+
+/* ---------- Portada ---------- */
+.portada {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 28px 60px;
+  background-image: var(--floral);
+  background-size: cover;
+  background-position: 45% center;
+}
+
+.portada-contenido {
+  width: 64%;
+  text-align: center;
+}
+
+.monograma {
+  display: inline-grid;
+  place-items: center;
+  width: 78px;
+  height: 78px;
+  border: 1px solid var(--dorado);
+  border-radius: 50%;
+  outline: 1px solid var(--linea);
+  outline-offset: 5px;
+  font-family: var(--font-serif), serif;
+  font-size: 1.05rem;
+  letter-spacing: 0.1em;
+  color: var(--dorado-osc);
+  margin-bottom: 26px;
+}
+
+.nombres {
+  font-family: var(--font-script), cursive;
+  font-weight: 400;
+  font-size: 3.3rem;
+  line-height: 1.05;
+  color: var(--chocolate);
+  margin: 10px 0 18px;
+}
+
+.nombres span {
+  display: block;
+}
+
+.nombres .y {
+  font-size: 2rem;
+  color: var(--dorado);
+  margin: 4px 0;
+}
+
+.fecha-portada {
+  font-family: var(--font-serif), serif;
+  font-size: 1.35rem;
+  letter-spacing: 0.25em;
+  color: var(--texto);
+  border-top: 1px solid var(--linea);
+  border-bottom: 1px solid var(--linea);
+  padding: 8px 0;
+  margin: 0 auto;
+  max-width: 220px;
+}
+
+.scroll-indicador {
+  position: absolute;
+  bottom: 24px;
+  left: 33%;
+  transform: translateX(-50%);
+  color: var(--dorado);
+  animation: flotar 2.4s ease-in-out infinite;
+}
+
+.scroll-indicador svg {
+  width: 22px;
+  height: 22px;
+}
+
+@keyframes flotar {
+  50% {
+    transform: translate(-50%, 8px);
+  }
+}
+
+/* ---------- Foto destacada ---------- */
+.foto-arco {
+  width: 240px;
+  aspect-ratio: 4 / 5;
+  margin: 34px auto 0;
+  border-radius: 999px 999px 12px 12px;
+  overflow: hidden;
+  padding: 6px;
+  border: 1px solid var(--dorado);
+  background: var(--marfil);
+}
+
+.foto-arco img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 999px 999px 8px 8px;
+}
+
+/* ---------- Cuenta regresiva ---------- */
+.contador {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  max-width: 360px;
+  margin: 20px auto 0;
+}
+
+.contador div {
+  padding: 14px 4px 10px;
+  border: 1px solid var(--linea);
+  border-radius: 10px;
+  background: rgba(251, 247, 240, 0.92);
+}
+
+.contador strong {
+  display: block;
+  font-family: var(--font-serif), serif;
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--chocolate);
+}
+
+.contador span {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dorado-osc);
+}
+
+.fecha-larga {
+  font-family: var(--font-serif), serif;
+  font-size: 1.15rem;
+  margin-top: 18px;
+}
+
+.fecha-larga::first-letter {
+  text-transform: uppercase;
+}
+
+/* ---------- Pase ---------- */
+.pase {
+  position: relative;
+  max-width: 320px;
+  margin: 0 auto;
+  padding: 44px 24px 34px;
+  background: var(--marfil);
+  border: 1px solid var(--dorado);
+  outline: 1px solid var(--linea);
+  outline-offset: -8px;
+  border-radius: 4px;
+  box-shadow: 0 14px 34px rgba(90, 58, 34, 0.12);
+}
+
+.pase-liston {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 28px;
+  background: var(--chocolate);
+  color: #ecd9b8;
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  clip-path: polygon(0 0, 100% 0, 94% 50%, 100% 100%, 0 100%, 6% 50%);
+}
+
+.pase-numero {
+  font-family: var(--font-serif), serif;
+  font-weight: 300;
+  font-size: 5.2rem;
+  line-height: 1;
+  color: var(--chocolate);
+  margin: 6px 0 0;
+}
+
+.pase-personas {
+  font-family: var(--font-serif), serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  color: var(--dorado-osc);
+  margin: 0;
+}
+
+.pase-nota {
+  margin: 18px 0 0;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--texto-suave);
+}
+
+/* ---------- Evento (ceremonia / recepción) ---------- */
+.evento-icono {
+  width: 46px;
+  height: 46px;
+  margin: 0 auto 12px;
+  color: var(--dorado);
+}
+
+.evento-hora {
+  font-family: var(--font-serif), serif;
+  font-size: 1.5rem;
+  color: var(--chocolate);
+  margin: 6px 0 2px;
+}
+
+.evento-lugar {
+  font-family: var(--font-serif), serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--texto);
+  margin: 10px 0 4px;
+}
+
+.evento-direccion {
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+  max-width: 280px;
+  margin: 0 auto 24px;
+}
+
+/* ---------- Itinerario ---------- */
+.linea-tiempo {
+  list-style: none;
+  padding: 0;
+  margin: 30px auto 0;
+  max-width: 340px;
+  position: relative;
+}
+
+.linea-tiempo::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 50%;
+  width: 1px;
+  background: var(--linea);
+}
+
+.linea-tiempo li {
+  display: grid;
+  grid-template-columns: 1fr 52px 1fr;
+  align-items: center;
+  margin-bottom: 26px;
+}
+
+.linea-tiempo li:last-child {
+  margin-bottom: 0;
+}
+
+.linea-tiempo .hora {
+  font-family: var(--font-serif), serif;
+  font-size: 1.35rem;
+  color: var(--chocolate);
+  text-align: right;
+  padding-right: 14px;
+}
+
+.linea-tiempo .punto {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid var(--dorado);
+  background: var(--crema);
+  color: var(--dorado-osc);
+  position: relative;
+}
+
+.linea-tiempo .punto svg {
+  width: 24px;
+  height: 24px;
+}
+
+.linea-tiempo .nombre {
+  text-align: left;
+  padding-left: 14px;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+.linea-tiempo li:nth-child(even) .hora {
+  order: 3;
+  text-align: left;
+  padding: 0 0 0 14px;
+}
+
+.linea-tiempo li:nth-child(even) .punto {
+  order: 2;
+}
+
+.linea-tiempo li:nth-child(even) .nombre {
+  order: 1;
+  text-align: right;
+  padding: 0 14px 0 0;
+}
+
+/* ---------- Familia ---------- */
+.familia-grupo {
+  margin: 26px 0 0;
+}
+
+.familia-grupo p:not(.etiqueta) {
+  margin: 0;
+  font-family: var(--font-serif), serif;
+  font-size: 1.15rem;
+}
+
+.padrinos {
+  display: grid;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.padrinos p:not(.etiqueta) {
+  margin: 0;
+  font-family: var(--font-serif), serif;
+  font-size: 1.1rem;
+}
+
+/* ---------- Vestimenta ---------- */
+.vestimenta-tipo {
+  font-family: var(--font-script), cursive;
+  font-size: 3rem;
+  color: var(--chocolate);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.vestimenta-figuras {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  color: var(--dorado);
+  margin: 18px 0 10px;
+}
+
+.vestimenta-figuras svg {
+  width: 54px;
+  height: 90px;
+}
+
+.colores {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 14px;
+}
+
+.colores div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+}
+
+.colores span {
+  position: relative;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--linea);
+  overflow: hidden;
+}
+
+.colores span::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -4px;
+  right: -4px;
+  height: 1px;
+  background: var(--chocolate);
+  transform: rotate(-45deg);
+}
+
+/* ---------- Regalos ---------- */
+.regalos-lista {
+  display: grid;
+  gap: 16px;
+  margin: 28px auto 0;
+  max-width: 340px;
+}
+
+.tarjeta {
+  padding: 22px 20px;
+  background: rgba(251, 247, 240, 0.8);
+  border: 1px solid var(--linea);
+  border-radius: 10px;
+}
+
+.tarjeta h3 {
+  font-family: var(--font-serif), serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--chocolate);
+  margin: 0 0 4px;
+}
+
+.tarjeta p {
+  margin: 0 0 12px;
+  font-size: 0.85rem;
+}
+
+.tarjeta .dato {
+  font-family: var(--font-serif), serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
+  color: var(--texto);
+  word-break: break-word;
+}
+
+/* ---------- Galería ---------- */
+.galeria {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.galeria button {
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  overflow: hidden;
+  border-radius: 8px;
+  aspect-ratio: 4 / 5;
+}
+
+/* con número impar de fotos, la primera ocupa todo el ancho */
+.galeria button:first-child:nth-last-child(odd) {
+  grid-column: 1 / -1;
+  aspect-ratio: 4 / 3;
+}
+
+.galeria img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.galeria button:hover img {
+  transform: scale(1.05);
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(42, 28, 18, 0.9);
+  cursor: zoom-out;
+  animation: aparecer 0.3s ease;
+}
+
+.lightbox img {
+  max-height: 88vh;
+  border-radius: 6px;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ---------- Agradecimiento ---------- */
+.agradecimiento {
+  padding-bottom: 120px;
+}
+
+.agradecimiento::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--floral) right bottom / cover no-repeat;
+  opacity: 0.55;
+  -webkit-mask-image: linear-gradient(transparent 0%, #000 85%);
+  mask-image: linear-gradient(transparent 0%, #000 85%);
+}
+
+.firma {
+  font-family: var(--font-script), cursive;
+  font-size: 2.6rem;
+  color: var(--chocolate);
+  margin: 22px 0 0;
+}
+
+/* ---------- Música ---------- */
+.musica {
+  position: fixed;
+  right: max(16px, calc(50vw - 240px + 16px));
+  bottom: 18px;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--dorado);
+  background: rgba(251, 247, 240, 0.92);
+  color: var(--chocolate);
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(90, 58, 34, 0.2);
+}
+
+.musica svg {
+  width: 20px;
+  height: 20px;
+}
+
+.musica.sonando::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid var(--dorado);
+  animation: pulso 2s ease-out infinite;
+}
+
+@keyframes pulso {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+  to {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+/* ---------- Pantallas pequeñas ---------- */
+@media (max-width: 360px) {
+  .nombres {
+    font-size: 2.8rem;
+  }
+  .contador strong {
+    font-size: 1.6rem;
+  }
+}

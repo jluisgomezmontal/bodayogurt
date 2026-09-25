@@ -1,0 +1,128 @@
+{
+  "sitio": {
+    "url": "https://tu-invitacion.vercel.app",
+    "titulo": "Neli & José · Nuestra Boda",
+    "descripcion": "Nos casamos el 31 de octubre de 2026. Acompáñanos a celebrar este día tan especial."
+  },
+  "novios": {
+    "ella": "Neli",
+    "el": "José",
+    "iniciales": "N & J"
+  },
+  "fecha": "2026-10-31T17:00:00-06:00",
+  "sobre": {
+    "mostrar": true,
+    "texto": "Tienes una invitación especial",
+    "boton": "Abrir invitación"
+  },
+  "portada": {
+    "frase": "Nos casamos",
+    "foto": "/images/novios/portada.jpeg"
+  },
+  "bienvenida": {
+    "mostrar": true,
+    "titulo": "Con la bendición de Dios",
+    "mensaje": "Y el amor que nos une, tenemos el honor de invitarte a celebrar el día en que uniremos nuestras vidas. Tu presencia hará este momento aún más especial."
+  },
+  "cuentaRegresiva": {
+    "mostrar": true,
+    "titulo": "Faltan"
+  },
+  "pase": {
+    "mostrar": true,
+    "titulo": "Pase",
+    "personas": 3,
+    "texto": "Hemos reservado para ustedes",
+    "nota": "Evento exclusivo para adultos"
+  },
+  "ceremonia": {
+    "mostrar": true,
+    "titulo": "Ceremonia Religiosa",
+    "lugar": "Iglesia del Señor San Marcos Evangelista",
+    "hora": "17:00 hrs",
+    "direccion": "C. Fernando Montés de Oca 144, El Cantaro, 39960 San Marcos, Gro.",
+    "mapsUrl": "https://maps.app.goo.gl/Tm7ME77UzV4k7jHW8"
+  },
+  "recepcion": {
+    "mostrar": true,
+    "titulo": "Recepción",
+    "lugar": "Jardín Hacienda Los Olivos",
+    "hora": "19:00 hrs",
+    "direccion": "Carretera Federal km 12, Col. Las Flores, Ciudad de México",
+    "mapsUrl": "https://maps.google.com/?q=Hacienda+Los+Olivos"
+  },
+  "itinerario": {
+    "mostrar": true,
+    "titulo": "Itinerario",
+    "eventos": [
+      { "hora": "17:00", "evento": "Ceremonia religiosa", "icono": "iglesia" },
+      { "hora": "19:00", "evento": "Cóctel de bienvenida", "icono": "copas" },
+      { "hora": "20:30", "evento": "Cena", "icono": "cena" },
+      { "hora": "22:00", "evento": "Primer baile y fiesta", "icono": "musica" },
+      { "hora": "02:00", "evento": "Fin del evento", "icono": "luna" }
+    ]
+  },
+  "familia": {
+    "mostrar": true,
+    "titulo": "Con la bendición de nuestros padres",
+    "padresNovia": ["Martín Ramírez Cruz", "Dolores García gallardo"],
+    "padresNovio": ["Lamberto Bibiano García", "María Guadalupe Garibay Villanueva"],
+    "tituloPadrinos": "Y nuestros padrinos",
+    "padrinos": [
+      { "rol": "Velación", "nombres": "Jorge de la Rosa Guinto & María Yordi Gutiérrez castro" },
+      { "rol": "Anillos", "nombres": "Israel Bibiano Agaton & Sandra Luz Villanueva Moreno" },
+      { "rol": "Arras", "nombres": "José Luis Magaña Cruz & Carolina Gallardo Solano" },
+      { "rol": "Lazo", "nombres": "Ricardo Tereza Jiménez & Guadalupe Ramírez García" }
+    ]
+  },
+  "vestimenta": {
+    "mostrar": true,
+    "titulo": "Código de vestimenta",
+    "tipo": "Formal",
+    "descripcion": "Ellas: vestido largo · Ellos: traje",
+    "nota": "Te pedimos amablemente evitar los colores",
+    "evitarColores": [
+      { "nombre": "Blanco", "hex": "#FFFFFF" },
+      { "nombre": "Beige", "hex": "#E6D5BE" }
+    ]
+  },
+  "regalos": {
+    "mostrar": true,
+    "titulo": "Mesa de regalos",
+    "mensaje": "Tu presencia es nuestro mejor regalo, pero si deseas tener un detalle con nosotros, te compartimos algunas opciones.",
+    "mesas": [
+      { "tienda": "Liverpool", "numero": "51234567", "url": "https://mesaderegalos.liverpool.com.mx/" },
+      { "tienda": "Amazon", "numero": "", "url": "https://www.amazon.com.mx/wedding" }
+    ],
+    "cuenta": {
+      "mostrar": true,
+      "banco": "BBVA",
+      "titular": "Mariana Hernández Gómez",
+      "clabe": "012 180 00123456789 0"
+    },
+    "lluviaDeSobres": {
+      "mostrar": true,
+      "texto": "El día del evento habrá lluvia de sobres"
+    }
+  },
+  "galeria": {
+    "mostrar": true,
+    "titulo": "Nuestra historia",
+    "fotos": [
+      "/images/novios/nuestrahistoria1.jpeg",
+      "/images/novios/nuestrahistoria2.jpeg",
+      "/images/novios/nuestrahistoria3.jpeg",
+      "/images/novios/nuestrahistoria4.jpeg",
+      "/images/novios/nuestrahistoria5.jpeg"
+    ]
+  },
+  "musica": {
+    "mostrar": true,
+    "archivo": "/audio/cancion.mp3"
+  },
+  "agradecimiento": {
+    "mostrar": true,
+    "mensaje": "Gracias por ser parte de nuestra historia y acompañarnos en el inicio de esta nueva etapa. ¡Te esperamos!",
+    "firma": "Mariana & Alejandro"
+  }
+}
