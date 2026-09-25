@@ -71,14 +71,14 @@
     "padresNovio": ["Lamberto Bibiano García", "María Guadalupe Garibay Villanueva"],
     "tituloPadrinos": "Y nuestros padrinos",
     "padrinos": [
-      { "rol": "Velación", "nombres": "Jorge de la Rosa Guinto & María Yordi Gutiérrez castro" },
-      { "rol": "Anillos", "nombres": "Israel Bibiano Agaton & Sandra Luz Villanueva Moreno" },
-      { "rol": "Arras", "nombres": "José Luis Magaña Cruz & Carolina Gallardo Solano" },
-      { "rol": "Lazo", "nombres": "Ricardo Tereza Jiménez & Guadalupe Ramírez García" }
+      { "rol": "Velación", "icono": "vela", "nombres": "Jorge de la Rosa Guinto & María Yordi Gutiérrez castro" },
+      { "rol": "Anillos", "icono": "anillos", "nombres": "Israel Bibiano Agaton & Sandra Luz Villanueva Moreno" },
+      { "rol": "Arras", "icono": "arras", "nombres": "José Luis Magaña Cruz & Carolina Gallardo Solano" },
+      { "rol": "Lazo", "icono": "lazo", "nombres": "Ricardo Tereza Jiménez & Guadalupe Ramírez García" }
     ]
   },
   "vestimenta": {
-    "mostrar": true,
+    "mostrar": false,
     "titulo": "Código de vestimenta",
     "tipo": "Formal",
     "descripcion": "Ellas: vestido largo · Ellos: traje",
@@ -89,7 +89,7 @@
     ]
   },
   "regalos": {
-    "mostrar": true,
+    "mostrar": false,
     "titulo": "Mesa de regalos",
     "mensaje": "Tu presencia es nuestro mejor regalo, pero si deseas tener un detalle con nosotros, te compartimos algunas opciones.",
     "mesas": [
@@ -97,7 +97,7 @@
       { "tienda": "Amazon", "numero": "", "url": "https://www.amazon.com.mx/wedding" }
     ],
     "cuenta": {
-      "mostrar": true,
+      "mostrar": false,
       "banco": "BBVA",
       "titular": "Mariana Hernández Gómez",
       "clabe": "012 180 00123456789 0"
@@ -111,9 +111,9 @@
     "mostrar": true,
     "titulo": "Nuestra historia",
     "fotos": [
+      "/images/novios/nuestrahistoria3.jpeg",
       "/images/novios/nuestrahistoria1.jpeg",
       "/images/novios/nuestrahistoria2.jpeg",
-      "/images/novios/nuestrahistoria3.jpeg",
       "/images/novios/nuestrahistoria4.jpeg",
       "/images/novios/nuestrahistoria5.jpeg"
     ]
@@ -125,6 +125,6 @@
   "agradecimiento": {
     "mostrar": true,
     "mensaje": "Gracias por ser parte de nuestra historia y acompañarnos en el inicio de esta nueva etapa. ¡Te esperamos!",
-    "firma": "Mariana & Alejandro"
+    "firma": "Neli & José"
   }
 }

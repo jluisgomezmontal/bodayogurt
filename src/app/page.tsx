@@ -9,6 +9,7 @@ import {
   IconoSobre,
   IconoTraje,
   IconoVestido,
+  iconoPorRol,
 } from "@/components/Iconos";
 import SobreMusica from "@/components/SobreMusica";
 import CuentaRegresiva from "@/components/CuentaRegresiva";
@@ -153,6 +154,9 @@ export default function Pagina() {
               <div className="padrinos">
                 {familia.padrinos.map((p) => (
                   <div key={p.rol}>
+                    <span className="padrino-icono">
+                      <Icono nombre={p.icono ?? iconoPorRol(p.rol)} />
+                    </span>
                     <p className="etiqueta">{p.rol}</p>
                     <p>{p.nombres}</p>
                   </div>

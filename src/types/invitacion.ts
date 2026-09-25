@@ -8,7 +8,9 @@ export type Lugar = Seccion & {
   mapsUrl: string;
 };
 
-export type Icono = "iglesia" | "anillos" | "copas" | "cena" | "musica" | "luna" | "foto" | "pastel";
+export type Icono =
+  | "iglesia" | "anillos" | "copas" | "cena" | "musica" | "luna" | "foto" | "pastel"
+  | "vela" | "arras" | "lazo" | "biblia" | "rosario" | "ramo" | "cojines";
 
 export type Invitacion = {
   sitio: { url?: string; titulo: string; descripcion: string; imagenCompartir: string; icono: string };
@@ -27,7 +29,7 @@ export type Invitacion = {
     padresNovia: string[];
     padresNovio: string[];
     tituloPadrinos?: string;
-    padrinos: { rol: string; nombres: string }[];
+    padrinos: { rol: string; nombres: string; icono?: Icono }[];
   };
   vestimenta?: Seccion & {
     titulo: string;

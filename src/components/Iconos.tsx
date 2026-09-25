@@ -64,7 +64,71 @@ const rutas: Record<NombreIcono, React.ReactNode> = {
       <path d="M12 5.5c.8.8.8 2.5 0 2.5s-.8-1.7 0-2.5z" />
     </>
   ),
+  vela: (
+    <>
+      <path d="M9 10h6v11H9zM7 21h10M12 10V8" />
+      <path d="M12 2.5c1.6 1.8 1.6 4 0 4.5-1.6-.5-1.6-2.7 0-4.5z" />
+    </>
+  ),
+  arras: (
+    <>
+      <ellipse cx="12" cy="6" rx="7" ry="2.5" />
+      <path d="M5 6v4c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V6" />
+      <path d="M5 10v4c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-4" />
+      <path d="M5 14v4c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-4" />
+    </>
+  ),
+  lazo: (
+    <path d="M12 12c-2-3-4.5-4.5-6.5-4.5a4.5 4.5 0 0 0 0 9c2 0 4.5-1.5 6.5-4.5zm0 0c2 3 4.5 4.5 6.5 4.5a4.5 4.5 0 0 0 0-9c-2 0-4.5 1.5-6.5 4.5z" />
+  ),
+  biblia: (
+    <>
+      <path d="M5 20V5a2 2 0 0 1 2-2h12v15H7a2 2 0 0 0-2 2 2 2 0 0 0 2 2h12v-4" />
+      <path d="M12 6v8M9.5 8.5h5" />
+    </>
+  ),
+  rosario: (
+    <>
+      <circle cx="12" cy="8" r="5.5" strokeDasharray="0.1 2.6" strokeWidth="2.2" />
+      <path d="M12 13.5v8M9.5 16.5h5" />
+    </>
+  ),
+  ramo: (
+    <>
+      <circle cx="12" cy="5.5" r="2.5" />
+      <circle cx="7.5" cy="8.5" r="2.5" />
+      <circle cx="16.5" cy="8.5" r="2.5" />
+      <path d="M8.5 11l3.5 5 3.5-5M12 8v8M10 16h4l-1 6h-2z" />
+    </>
+  ),
+  cojines: (
+    <>
+      <path d="M4 7c3-2 13-2 16 0 1.5 3 1.5 7 0 10-3 2-13 2-16 0-1.5-3-1.5-7 0-10z" />
+      <path d="M9 12h6" />
+    </>
+  ),
 };
+
+/** Ícono sugerido según el rol del padrino, si en el JSON no se indica uno. */
+export function iconoPorRol(rol: string): NombreIcono {
+  const r = rol.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  const reglas: [string, NombreIcono][] = [
+    ["vela", "vela"],
+    ["arras", "arras"],
+    ["lazo", "lazo"],
+    ["anillo", "anillos"],
+    ["biblia", "biblia"],
+    ["rosario", "rosario"],
+    ["ramo", "ramo"],
+    ["cojin", "cojines"],
+    ["brindis", "copas"],
+    ["copa", "copas"],
+    ["pastel", "pastel"],
+    ["musica", "musica"],
+    ["foto", "foto"],
+  ];
+  return reglas.find(([clave]) => r.includes(clave))?.[1] ?? "anillos";
+}
 
 export function Icono({ nombre, className }: { nombre: NombreIcono; className?: string }) {
   return (

@@ -614,8 +614,24 @@ a {
 
 .padrinos {
   display: grid;
-  gap: 18px;
-  margin-top: 20px;
+  gap: 26px;
+  margin-top: 24px;
+}
+
+.padrino-icono {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  margin: 0 auto 10px;
+  border-radius: 50%;
+  border: 1px solid var(--dorado);
+  color: var(--dorado-osc);
+}
+
+.padrino-icono svg {
+  width: 22px;
+  height: 22px;
 }
 
 .padrinos p:not(.etiqueta) {
