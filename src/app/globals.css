@@ -145,40 +145,32 @@ a {
   border-color: var(--dorado-osc);
 }
 
-/* ---------- Adornos florales (recortes de la imagen) ---------- */
+/* ---------- Adornos florales (SVG completo en las esquinas) ---------- */
 .adorno {
   position: absolute;
   pointer-events: none;
-  background-image: var(--floral);
-  background-repeat: no-repeat;
   z-index: 0;
+  width: 175px;
+  height: 210px;
 }
 
 .adorno-sup {
   top: 0;
   right: 0;
-  width: 150px;
-  height: 180px;
-  background-size: 400px auto;
-  background-position: right top;
-  -webkit-mask-image: radial-gradient(ellipse at top right, #000 45%, transparent 72%);
-  mask-image: radial-gradient(ellipse at top right, #000 45%, transparent 72%);
 }
 
 .adorno-inf {
   bottom: 0;
   left: 0;
-  width: 170px;
-  height: 250px;
-  background-size: 440px auto;
-  background-position: right bottom;
-  transform: scaleX(-1);
-  -webkit-mask-image: radial-gradient(ellipse at bottom right, #000 40%, transparent 72%);
-  mask-image: radial-gradient(ellipse at bottom right, #000 40%, transparent 72%);
+  transform: rotate(180deg);
 }
 
 .seccion:has(.adorno-sup) {
-  padding-top: 150px;
+  padding-top: 200px;
+}
+
+.seccion:has(.adorno-inf) {
+  padding-bottom: 150px;
 }
 
 .seccion > *:not(.adorno) {
