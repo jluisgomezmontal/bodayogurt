@@ -89,13 +89,16 @@
     ]
   },
   "regalos": {
-    "mostrar": false,
+    "mostrar": true,
     "titulo": "Mesa de regalos",
     "mensaje": "Tu presencia es nuestro mejor regalo, pero si deseas tener un detalle con nosotros, te compartimos algunas opciones.",
-    "mesas": [
-      { "tienda": "Liverpool", "numero": "51234567", "url": "https://mesaderegalos.liverpool.com.mx/" },
-      { "tienda": "Amazon", "numero": "", "url": "https://www.amazon.com.mx/wedding" }
-    ],
+    "mesas": {
+      "mostrar": false,
+      "lista": [
+        { "tienda": "Liverpool", "numero": "51234567", "url": "https://mesaderegalos.liverpool.com.mx/" },
+        { "tienda": "Amazon", "numero": "", "url": "https://www.amazon.com.mx/wedding" }
+      ]
+    },
     "cuenta": {
       "mostrar": false,
       "banco": "BBVA",

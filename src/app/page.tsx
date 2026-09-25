@@ -207,7 +207,7 @@ export default function Pagina() {
           <h2 className="titulo-script">{regalos.titulo}</h2>
           <p className="parrafo">{regalos.mensaje}</p>
           <div className="regalos-lista">
-            {regalos.mesas?.map((m) => (
+            {visible(regalos.mesas) && regalos.mesas.lista.map((m) => (
               <div className="tarjeta" key={m.tienda}>
                 <h3>{m.tienda}</h3>
                 {m.numero && <p>Evento: <span className="dato">{m.numero}</span></p>}
