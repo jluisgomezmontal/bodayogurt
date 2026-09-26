@@ -48,17 +48,19 @@
   "recepcion": {
     "mostrar": true,
     "titulo": "Recepción",
-    "lugar": "Jardín Hacienda Los Olivos",
+    "lugar": "Rancho los abuelos",
     "hora": "19:00 hrs",
     "direccion": "Carretera Federal km 12, Col. Las Flores, Ciudad de México",
     "mapsUrl": "https://maps.google.com/?q=Hacienda+Los+Olivos"
   },
   "itinerario": {
     "mostrar": true,
+    "etiqueta": "El gran día",
     "titulo": "Itinerario",
+    "subtitulo": "Así celebraremos juntos este día tan especial",
     "eventos": [
-      { "hora": "17:00", "evento": "Ceremonia religiosa", "icono": "iglesia" },
-      { "hora": "19:00", "evento": "Cóctel de bienvenida", "icono": "copas" },
+      { "hora": "17:00", "evento": "Ceremonia religiosa", "icono": "iglesia", "detalle": "Iglesia del Señor San Marcos Evangelista" },
+      { "hora": "19:00", "evento": "Cóctel de bienvenida", "icono": "copas", "detalle": "Rancho los abuelos" },
       { "hora": "20:30", "evento": "Cena", "icono": "cena" },
       { "hora": "22:00", "evento": "Primer baile y fiesta", "icono": "musica" },
       { "hora": "02:00", "evento": "Fin del evento", "icono": "luna" }

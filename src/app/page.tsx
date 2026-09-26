@@ -125,15 +125,19 @@ export default function Pagina() {
       {visible(itinerario) && (
         <Reveal as="section" className="seccion">
           <Adorno variante="nube" posicion="sup-der" />
+          {itinerario.etiqueta && <p className="etiqueta">{itinerario.etiqueta}</p>}
           <h2 className="titulo-script">{itinerario.titulo}</h2>
-          <ol className="linea-tiempo">
-            {itinerario.eventos.map((e) => (
-              <li key={e.hora + e.evento}>
-                <span className="hora">{e.hora}</span>
-                <span className="punto">
-                  <Icono nombre={e.icono} />
-                </span>
-                <span className="nombre">{e.evento}</span>
+          {itinerario.subtitulo && <p className="subtitulo">{itinerario.subtitulo}</p>}
+          <ol className="itinerario">
+            {itinerario.eventos.map((e, i) => (
+              <li key={e.hora + e.evento} style={{ "--i": i } as React.CSSProperties}>
+                <div className="contenido">
+                  <Icono nombre={e.icono} className="icono" />
+                  <span className="nombre">{e.evento}</span>
+                  <span className="hora">{e.hora}</span>
+                  {e.detalle && <span className="detalle">{e.detalle}</span>}
+                </div>
+                <span className="punto" />
               </li>
             ))}
           </ol>

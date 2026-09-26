@@ -587,81 +587,161 @@ a {
 }
 
 /* ---------- Itinerario ---------- */
-.linea-tiempo {
-  list-style: none;
-  padding: 0;
-  margin: 30px auto 0;
-  max-width: 340px;
-  position: relative;
+.subtitulo {
+  font-size: 0.85rem;
+  color: var(--texto-suave);
+  margin: 0 auto;
+  max-width: 300px;
 }
 
-.linea-tiempo::before {
+.itinerario {
+  position: relative;
+  list-style: none;
+  max-width: 360px;
+  margin: 40px auto 0;
+  padding: 0;
+}
+
+/* línea central: riel tenue + trazo dorado que se llena al aparecer */
+.itinerario::before,
+.itinerario::after {
   content: "";
   position: absolute;
-  top: 8px;
-  bottom: 8px;
+  top: 0;
+  bottom: 0;
   left: 50%;
   width: 1px;
-  background: var(--linea);
+  transform: translateX(-50%);
+  background: linear-gradient(transparent, var(--linea) 8%, var(--linea) 92%, transparent);
 }
 
-.linea-tiempo li {
-  display: grid;
-  grid-template-columns: 1fr 52px 1fr;
-  align-items: center;
-  margin-bottom: 26px;
+.itinerario::after {
+  background: linear-gradient(transparent, var(--dorado) 8%, var(--dorado-osc) 92%, transparent);
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top;
+  transition: transform 2.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
 }
 
-.linea-tiempo li:last-child {
-  margin-bottom: 0;
+.reveal.visible .itinerario::after {
+  transform: translateX(-50%) scaleY(1);
 }
 
-.linea-tiempo .hora {
-  font-family: var(--font-serif), serif;
-  font-size: 1.35rem;
-  color: var(--chocolate);
-  text-align: right;
-  padding-right: 14px;
-}
-
-.linea-tiempo .punto {
-  display: grid;
-  place-items: center;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: 1px solid var(--dorado);
-  background: var(--crema);
-  color: var(--dorado-osc);
+/* cada evento ocupa media columna y se alternan; se enciman un poco para escalonarlos */
+.itinerario li {
   position: relative;
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
 }
 
-.linea-tiempo .punto svg {
-  width: 24px;
-  height: 24px;
+.itinerario li + li {
+  margin-top: -34px;
 }
 
-.linea-tiempo .nombre {
-  text-align: left;
-  padding-left: 14px;
-  font-size: 0.88rem;
+.itinerario li:nth-child(even) {
+  justify-content: flex-end;
+}
+
+.itinerario .contenido {
+  width: 50%;
+  padding: 0 22px 34px 0;
+  text-align: center;
+}
+
+.itinerario li:nth-child(even) .contenido {
+  padding: 0 0 34px 22px;
+}
+
+.itinerario .icono {
+  display: block;
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 10px;
+  color: var(--dorado-osc);
+}
+
+.itinerario .nombre {
+  display: block;
+  font-family: var(--font-serif), serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--chocolate);
+}
+
+.itinerario .hora {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-serif), serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+  color: var(--dorado-osc);
+}
+
+.itinerario .detalle {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.75rem;
   line-height: 1.4;
+  color: var(--texto-suave);
 }
 
-.linea-tiempo li:nth-child(even) .hora {
-  order: 3;
-  text-align: left;
-  padding: 0 0 0 14px;
+/* punto dorado sobre la línea, a la altura del nombre */
+.itinerario .punto {
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  width: 13px;
+  height: 13px;
+  margin-left: -6.5px;
+  border-radius: 50%;
+  background: var(--dorado);
+  box-shadow: 0 0 0 4px var(--crema), 0 0 0 5px var(--linea), 0 0 12px rgba(184, 147, 90, 0.6);
+  z-index: 1;
 }
 
-.linea-tiempo li:nth-child(even) .punto {
-  order: 2;
+/* aparición en secuencia: el punto se enciende y el texto entra desde su lado */
+.itinerario .punto,
+.itinerario .contenido {
+  transition-delay: calc(0.4s + var(--i) * 0.45s);
 }
 
-.linea-tiempo li:nth-child(even) .nombre {
-  order: 1;
-  text-align: right;
-  padding: 0 14px 0 0;
+.itinerario .punto {
+  transform: scale(0);
+  transition-property: transform;
+  transition-duration: 0.6s;
+  transition-timing-function: cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+.itinerario .contenido {
+  opacity: 0;
+  transform: translateX(-14px);
+  transition-property: opacity, transform;
+  transition-duration: 0.9s;
+  transition-timing-function: ease;
+}
+
+.itinerario li:nth-child(even) .contenido {
+  transform: translateX(14px);
+}
+
+.reveal.visible .itinerario .punto,
+.reveal.visible .itinerario .contenido {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .itinerario::after {
+    transform: translateX(-50%);
+    transition: none;
+  }
+  .itinerario .punto,
+  .itinerario .contenido {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* ---------- Familia ---------- */

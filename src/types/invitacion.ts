@@ -23,7 +23,12 @@ export type Invitacion = {
   pase?: Seccion & { titulo: string; personas: number; texto: string; nota?: string };
   ceremonia?: Lugar;
   recepcion?: Lugar;
-  itinerario?: Seccion & { titulo: string; eventos: { hora: string; evento: string; icono: Icono }[] };
+  itinerario?: Seccion & {
+    etiqueta?: string;
+    titulo: string;
+    subtitulo?: string;
+    eventos: { hora: string; evento: string; icono: Icono; detalle?: string }[];
+  };
   familia?: Seccion & {
     titulo: string;
     padresNovia: string[];
