@@ -876,6 +876,37 @@ a {
   word-break: break-word;
 }
 
+.sobre-regalo {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  border: 1px solid var(--dorado);
+  outline: 1px solid var(--linea);
+  outline-offset: 5px;
+  color: var(--dorado-osc);
+}
+
+.sobre-regalo svg {
+  width: 34px;
+  height: 34px;
+}
+
+.nota-sobres {
+  display: inline-block;
+  margin: 26px auto 0;
+  padding: 10px 22px;
+  border-top: 1px solid var(--linea);
+  border-bottom: 1px solid var(--linea);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dorado-osc);
+}
+
 /* ---------- Galería ---------- */
 .galeria {
   display: grid;

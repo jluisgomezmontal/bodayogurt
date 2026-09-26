@@ -56,6 +56,9 @@ function Evento({ datos, icono, adorno }: {
 export default function Pagina() {
   const { novios, portada, bienvenida, cuentaRegresiva, pase, ceremonia, recepcion, itinerario, familia, vestimenta, regalos, galeria, agradecimiento } = inv;
   const fecha = partesFecha(inv.fecha);
+  // Si solo hay lluvia de sobres, la sección se muestra como un bloque sencillo en lugar de tarjetas
+  const soloSobres =
+    visible(regalos) && visible(regalos.lluviaDeSobres) && !visible(regalos.mesas) && !visible(regalos.cuenta);
 
   return (
     <main className="invitacion">
@@ -207,9 +210,18 @@ export default function Pagina() {
       {/* Regalos */}
       {visible(regalos) && (
         <Reveal as="section" className="seccion">
-          <Icono nombre="anillos" className="evento-icono" />
+          {soloSobres ? (
+            <div className="sobre-regalo">
+              <IconoSobre />
+            </div>
+          ) : (
+            <Icono nombre="anillos" className="evento-icono" />
+          )}
           <h2 className="titulo-script">{regalos.titulo}</h2>
           <p className="parrafo">{regalos.mensaje}</p>
+          {soloSobres ? (
+            <p className="nota-sobres">{regalos.lluviaDeSobres?.texto}</p>
+          ) : (
           <div className="regalos-lista">
             {visible(regalos.mesas) && regalos.mesas.lista.map((m) => (
               <div className="tarjeta" key={m.tienda}>
@@ -241,6 +253,7 @@ export default function Pagina() {
               </div>
             )}
           </div>
+          )}
         </Reveal>
       )}
 

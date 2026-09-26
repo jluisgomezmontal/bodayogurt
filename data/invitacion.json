@@ -41,7 +41,7 @@
     "mostrar": true,
     "titulo": "Ceremonia Religiosa",
     "lugar": "Iglesia del Señor San Marcos Evangelista",
-    "hora": "17:00 hrs",
+    "hora": "05:00 hrs P.M.",
     "direccion": "C. Fernando Montés de Oca 144, El Cantaro, 39960 San Marcos, Gro.",
     "mapsUrl": "https://maps.app.goo.gl/Tm7ME77UzV4k7jHW8"
   },
@@ -49,7 +49,7 @@
     "mostrar": true,
     "titulo": "Recepción",
     "lugar": "Rancho los abuelos",
-    "hora": "19:00 hrs",
+    "hora": "08:00 hrs P.M.",
     "direccion": "Carretera Federal km 12, Col. Las Flores, Ciudad de México",
     "mapsUrl": "https://maps.google.com/?q=Hacienda+Los+Olivos"
   },
@@ -59,17 +59,16 @@
     "titulo": "Itinerario",
     "subtitulo": "Así celebraremos juntos este día tan especial",
     "eventos": [
-      { "hora": "17:00", "evento": "Ceremonia religiosa", "icono": "iglesia", "detalle": "Iglesia del Señor San Marcos Evangelista" },
-      { "hora": "19:00", "evento": "Cóctel de bienvenida", "icono": "copas", "detalle": "Rancho los abuelos" },
-      { "hora": "20:30", "evento": "Cena", "icono": "cena" },
-      { "hora": "22:00", "evento": "Primer baile y fiesta", "icono": "musica" },
-      { "hora": "02:00", "evento": "Fin del evento", "icono": "luna" }
+      { "hora": "05:00 hrs P.M.", "evento": "Ceremonia religiosa", "icono": "iglesia", "detalle": "Iglesia del Señor San Marcos Evangelista" },
+      { "hora": "07:00 hrs P.M.", "evento": "Ceremonia Civil", "icono": "copas", "detalle": "Rancho los abuelos" },
+      { "hora": "08:00 hrs P.M.", "evento": "Recepcion", "icono": "cena" },
+      { "hora": "09:00 hrs P.M.", "evento": "Primer baile y fiesta", "icono": "musica" }
     ]
   },
   "familia": {
     "mostrar": true,
     "titulo": "Con la bendición de nuestros padres",
-    "padresNovia": ["Martín Ramírez Cruz", "Dolores García gallardo"],
+    "padresNovia": ["Martín Ramírez Cruz", "Dolores García Gallardo"],
     "padresNovio": ["Lamberto Bibiano García", "María Guadalupe Garibay Villanueva"],
     "tituloPadrinos": "Y nuestros padrinos",
     "padrinos": [
@@ -92,8 +91,8 @@
   },
   "regalos": {
     "mostrar": true,
-    "titulo": "Mesa de regalos",
-    "mensaje": "Tu presencia es nuestro mejor regalo, pero si deseas tener un detalle con nosotros, te compartimos algunas opciones.",
+    "titulo": "Lluvia de sobres",
+    "mensaje": "Tu presencia es nuestro mejor regalo, pero si deseas tener un detalle con nosotros, lo recibiremos con mucho cariño.",
     "mesas": {
       "mostrar": false,
       "lista": [
@@ -109,7 +108,7 @@
     },
     "lluviaDeSobres": {
       "mostrar": true,
-      "texto": "El día del evento habrá lluvia de sobres"
+      "texto": "El día del evento habrá un buzón para tus sobres"
     }
   },
   "galeria": {
