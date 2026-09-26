@@ -48,7 +48,7 @@ export type Invitacion = {
     mensaje: string;
     mesas?: Seccion & { lista: { tienda: string; numero?: string; url?: string }[] };
     cuenta?: Seccion & { banco: string; titular: string; clabe: string };
-    lluviaDeSobres?: Seccion & { texto: string };
+    lluviaDeSobres?: Seccion & { titulo?: string; texto: string };
   };
   galeria?: Seccion & { titulo: string; fotos: string[] };
   musica?: Seccion & { archivo: string };

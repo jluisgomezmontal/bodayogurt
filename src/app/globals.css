@@ -894,9 +894,18 @@ a {
   height: 34px;
 }
 
+.subtitulo-sobres {
+  margin: 34px 0 0;
+  font-family: var(--font-script), cursive;
+  font-weight: 400;
+  font-size: 1.9rem;
+  line-height: 1.2;
+  color: var(--chocolate);
+}
+
 .nota-sobres {
   display: inline-block;
-  margin: 26px auto 0;
+  margin: 10px auto 0;
   padding: 10px 22px;
   border-top: 1px solid var(--linea);
   border-bottom: 1px solid var(--linea);

@@ -91,7 +91,7 @@
   },
   "regalos": {
     "mostrar": true,
-    "titulo": "Lluvia de sobres",
+    "titulo": "Mesa de Regalos",
     "mensaje": "Tu presencia es nuestro mejor regalo, pero si deseas tener un detalle con nosotros, lo recibiremos con mucho cariño.",
     "mesas": {
       "mostrar": false,
@@ -107,6 +107,7 @@
       "clabe": "012 180 00123456789 0"
     },
     "lluviaDeSobres": {
+      "titulo": "Lluvia de sobres",
       "mostrar": true,
       "texto": "El día del evento habrá un buzón para tus sobres"
     }

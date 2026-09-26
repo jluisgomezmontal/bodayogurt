@@ -220,7 +220,10 @@ export default function Pagina() {
           <h2 className="titulo-script">{regalos.titulo}</h2>
           <p className="parrafo">{regalos.mensaje}</p>
           {soloSobres ? (
-            <p className="nota-sobres">{regalos.lluviaDeSobres?.texto}</p>
+            <>
+              <h3 className="subtitulo-sobres">{regalos.lluviaDeSobres?.titulo ?? "Lluvia de sobres"}</h3>
+              <p className="nota-sobres">{regalos.lluviaDeSobres?.texto}</p>
+            </>
           ) : (
           <div className="regalos-lista">
             {visible(regalos.mesas) && regalos.mesas.lista.map((m) => (
@@ -248,7 +251,7 @@ export default function Pagina() {
             {visible(regalos.lluviaDeSobres) && (
               <div className="tarjeta">
                 <IconoSobreGrande />
-                <h3>Lluvia de sobres</h3>
+                <h3>{regalos.lluviaDeSobres.titulo ?? "Lluvia de sobres"}</h3>
                 <p style={{ margin: 0 }}>{regalos.lluviaDeSobres.texto}</p>
               </div>
             )}
