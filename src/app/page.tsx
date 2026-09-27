@@ -163,16 +163,25 @@ export default function Pagina() {
           </div>
           {familia.padrinos.length > 0 && (
             <>
-              <h3 className="titulo-script" style={{ marginTop: 44 }}>{familia.tituloPadrinos}</h3>
+              {/* Cada bloque se anima por separado al entrar en pantalla */}
+              <Reveal className="sin-mov padrinos-encabezado">
+                <h3 className="titulo-script titulo-padrinos">{familia.tituloPadrinos}</h3>
+                <span className="linea-padrinos" aria-hidden="true">
+                  <i />
+                </span>
+              </Reveal>
               <div className="padrinos">
                 {familia.padrinos.map((p) => (
-                  <div key={p.rol}>
+                  <Reveal key={p.rol} className="sin-mov padrino">
                     <span className="padrino-icono">
+                      <svg className="aro" viewBox="0 0 48 48" aria-hidden="true">
+                        <circle cx="24" cy="24" r="23" pathLength={1} />
+                      </svg>
                       <Icono nombre={p.icono ?? iconoPorRol(p.rol)} />
                     </span>
                     <p className="etiqueta">{p.rol}</p>
-                    <p>{p.nombres}</p>
-                  </div>
+                    <p className="nombres-padrino">{p.nombres}</p>
+                  </Reveal>
                 ))}
               </div>
             </>
@@ -220,10 +229,11 @@ export default function Pagina() {
           <h2 className="titulo-script">{regalos.titulo}</h2>
           <p className="parrafo">{regalos.mensaje}</p>
           {soloSobres ? (
-            <>
+            <Reveal className="sin-mov lluvia">
+              <LluviaSobres />
               <h3 className="subtitulo-sobres">{regalos.lluviaDeSobres?.titulo ?? "Lluvia de sobres"}</h3>
               <p className="nota-sobres">{regalos.lluviaDeSobres?.texto}</p>
-            </>
+            </Reveal>
           ) : (
           <div className="regalos-lista">
             {visible(regalos.mesas) && regalos.mesas.lista.map((m) => (
@@ -279,6 +289,35 @@ export default function Pagina() {
         </section>
       )}
     </main>
+  );
+}
+
+// Sobres que caen: [posición horizontal %, retraso s, duración s, tamaño, giro°, deriva px]
+const sobresCayendo: [number, number, number, number, number, number][] = [
+  [8, 0, 7.5, 0.9, -18, 14],
+  [22, 2.6, 8.5, 0.7, 12, -10],
+  [36, 1.2, 7, 1, -8, 12],
+  [52, 3.8, 9, 0.75, 20, -14],
+  [66, 0.6, 7.8, 0.95, -14, 10],
+  [80, 2.2, 8.2, 0.8, 16, -12],
+  [92, 4.4, 7.2, 0.7, -20, 8],
+  [45, 5.4, 8.8, 0.65, 10, -8],
+];
+
+function LluviaSobres() {
+  return (
+    <div className="lluvia-sobres" aria-hidden="true">
+      {sobresCayendo.map(([x, d, t, s, r, dx], i) => (
+        <span
+          key={i}
+          style={
+            { left: `${x}%`, "--d": `${d}s`, "--t": `${t}s`, "--s": s, "--r": `${r}deg`, "--dx": `${dx}px` } as React.CSSProperties
+          }
+        >
+          <IconoSobre />
+        </span>
+      ))}
+    </div>
   );
 }
 

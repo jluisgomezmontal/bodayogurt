@@ -14,13 +14,21 @@ export default function SobreMusica({ sobre, musica, novios }: Props) {
   const conSobre = visible(sobre);
   const conMusica = visible(musica);
   const audio = useRef<HTMLAudioElement>(null);
-  const [abierto, setAbierto] = useState(!conSobre);
+  // cerrado → abriendo (animación del sobre, ~3s) → abierto
+  const [estado, setEstado] = useState<"cerrado" | "abriendo" | "abierto">(conSobre ? "cerrado" : "abierto");
+  const abierto = estado === "abierto";
   const [sonando, setSonando] = useState(false);
   const [audioOk, setAudioOk] = useState(true);
 
   useEffect(() => {
     document.body.classList.toggle("bloqueado", !abierto);
   }, [abierto]);
+
+  useEffect(() => {
+    if (estado !== "abriendo") return;
+    const id = setTimeout(() => setEstado("abierto"), 3200);
+    return () => clearTimeout(id);
+  }, [estado]);
 
   const reproducir = () => {
     audio.current
@@ -30,7 +38,8 @@ export default function SobreMusica({ sobre, musica, novios }: Props) {
   };
 
   const abrir = () => {
-    setAbierto(true);
+    if (estado !== "cerrado") return;
+    setEstado("abriendo");
     if (conMusica) reproducir();
   };
 
@@ -47,11 +56,24 @@ export default function SobreMusica({ sobre, musica, novios }: Props) {
   return (
     <>
       {conSobre && (
-        <div className={`sobre ${abierto ? "abierto" : ""}`} aria-hidden={abierto}>
-          <div className="sello">{novios.iniciales.replace(/\s/g, "")}</div>
+        <div className={`sobre ${estado}`} aria-hidden={abierto}>
           <p className="etiqueta">{novios.ella} & {novios.el}</p>
           <p className="sobre-texto">{sobre.texto}</p>
-          <button className="boton boton-lleno" onClick={abrir}>
+
+          {/* Sobre dibujado: fondo, tarjeta, bolsillo frontal, solapa y sello */}
+          <button className="sobre-dibujo" onClick={abrir} aria-label={sobre.boton} tabIndex={-1}>
+            <span className="sobre-fondo" />
+            <span className="sobre-carta">
+              <span className="carta-iniciales">{novios.iniciales}</span>
+              <span className="carta-linea" />
+              <span className="carta-texto">Nuestra boda</span>
+            </span>
+            <span className="sobre-bolsillo" />
+            <span className="sobre-solapa" />
+            <span className="sello">{novios.iniciales.replace(/\s/g, "")}</span>
+          </button>
+
+          <button className="boton boton-lleno sobre-boton" onClick={abrir}>
             {sobre.boton}
           </button>
         </div>

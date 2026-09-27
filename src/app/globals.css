@@ -292,6 +292,9 @@ a {
   html {
     scroll-behavior: auto;
   }
+  .sobre-dibujo {
+    animation: none;
+  }
   .reveal {
     opacity: 1;
     transform: none;
@@ -337,14 +340,166 @@ a {
 .sello {
   display: grid;
   place-items: center;
-  width: 140px;
-  height: 140px;
   border-radius: 50%;
   background: radial-gradient(circle at 35% 30%, #7a5234, var(--chocolate) 70%);
   color: #e9d3ae;
   font-family: var(--font-script), cursive;
-  font-size: 2.1rem;
-  box-shadow: 0 8px 24px rgba(90, 58, 34, 0.35), inset 0 0 0 5px rgba(233, 211, 174, 0.25);
+  box-shadow: 0 6px 16px rgba(90, 58, 34, 0.35), inset 0 0 0 4px rgba(233, 211, 174, 0.25);
+}
+
+/* ---- Sobre dibujado ---- */
+.sobre-dibujo {
+  position: relative;
+  width: min(280px, 76vw);
+  aspect-ratio: 3 / 2;
+  margin: 8px 0 6px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  perspective: 900px;
+  filter: drop-shadow(0 16px 26px rgba(90, 58, 34, 0.22));
+  animation: flotar-sobre 4s ease-in-out infinite;
+}
+
+@keyframes flotar-sobre {
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.sobre-dibujo > span {
+  position: absolute;
+  display: block;
+}
+
+.sobre-fondo {
+  inset: 0;
+  border-radius: 6px;
+  background: linear-gradient(180deg, #e2d0b4, #eadcc6);
+}
+
+.sobre-dibujo > .sobre-carta {
+  left: 7%;
+  right: 7%;
+  top: 7%;
+  bottom: 6%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  padding-top: 12%;
+  border-radius: 3px;
+  background: var(--marfil);
+  outline: 1px solid var(--linea);
+  outline-offset: -6px;
+  transition: transform 1.1s cubic-bezier(0.3, 0, 0.2, 1) 1.1s;
+}
+
+.carta-iniciales {
+  font-family: var(--font-script), cursive;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--chocolate);
+}
+
+.carta-linea {
+  width: 60px;
+  height: 1px;
+  background: var(--dorado);
+}
+
+.carta-texto {
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--dorado-osc);
+}
+
+/* bolsillo frontal con la abertura en V */
+.sobre-bolsillo {
+  inset: 0;
+  z-index: 2;
+  border-radius: 6px;
+  background: linear-gradient(165deg, #f8f1e6 0%, #efe3d1 60%, #e6d6bd 100%);
+  clip-path: polygon(0 0, 50% 52%, 100% 0, 100% 100%, 0 100%);
+}
+
+.sobre-bolsillo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top right, transparent calc(50% - 0.5px), rgba(184, 147, 90, 0.35) 50%, transparent calc(50% + 0.5px)) left bottom / 50% 48% no-repeat,
+    linear-gradient(to top left, transparent calc(50% - 0.5px), rgba(184, 147, 90, 0.35) 50%, transparent calc(50% + 0.5px)) right bottom / 50% 48% no-repeat;
+}
+
+/* solapa superior que se abre en 3D */
+.sobre-solapa {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 58%;
+  z-index: 3;
+  background: linear-gradient(180deg, #efe2cf, #e0cbac);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  transform-origin: top;
+  transition: transform 0.9s cubic-bezier(0.5, 0, 0.3, 1) 0.4s, z-index 0s 0.85s;
+}
+
+.sobre-dibujo > .sello {
+  left: 50%;
+  top: 58%;
+  z-index: 4;
+  display: grid;
+  width: 58px;
+  height: 58px;
+  font-size: 1.2rem;
+  transform: translate(-50%, -50%);
+  transition: transform 0.6s ease, opacity 0.5s ease 0.1s;
+}
+
+/* ---- Secuencia de apertura ---- */
+.sobre.abriendo .sobre-dibujo {
+  animation: none;
+}
+
+.sobre.abriendo .sobre-dibujo > .sello {
+  transform: translate(-50%, -50%) scale(1.35) rotate(-12deg);
+  opacity: 0;
+}
+
+.sobre.abriendo .sobre-solapa {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+.sobre.abriendo .sobre-dibujo > .sobre-carta {
+  transform: translateY(-58%);
+}
+
+.sobre > .etiqueta,
+.sobre-texto,
+.sobre-boton {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.sobre.abriendo > .etiqueta,
+.sobre.abriendo .sobre-texto,
+.sobre.abriendo .sobre-boton {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+/* al final todo se desvanece con un ligero acercamiento */
+.sobre.abriendo {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(1.06);
+  transition: opacity 1s ease 2.2s, transform 1.2s ease 2.1s, visibility 0s 3.2s;
 }
 
 .sobre-texto {
@@ -356,6 +511,43 @@ a {
 }
 
 /* ---------- Portada ---------- */
+/* Mientras el sobre está cerrado, el contenido de la portada espera; al abrirse entra en secuencia */
+.portada-contenido > * {
+  transition: opacity 1.2s ease, transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1), filter 1.2s ease,
+    clip-path 1.6s cubic-bezier(0.65, 0, 0.35, 1);
+  clip-path: inset(-10% -10% -10% -10%);
+}
+
+.sobre:not(.abriendo):not(.abierto) ~ .portada .portada-contenido > * {
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(4px);
+}
+
+.sobre:not(.abriendo):not(.abierto) ~ .portada .monograma {
+  transform: scale(0.7) rotate(-20deg);
+}
+
+/* la fecha se abre desde el centro (sin cambiar su tamaño, para no mover el resto) */
+.sobre:not(.abriendo):not(.abierto) ~ .portada .fecha-portada {
+  transform: none;
+  clip-path: inset(-10% 50% -10% 50%);
+}
+
+.sobre:is(.abriendo, .abierto) ~ .portada .portada-contenido > :nth-child(1) {
+  transition-delay: 2.4s;
+}
+.sobre:is(.abriendo, .abierto) ~ .portada .portada-contenido > :nth-child(2) {
+  transition-delay: 2.7s;
+}
+.sobre:is(.abriendo, .abierto) ~ .portada .portada-contenido > :nth-child(3) {
+  transition-delay: 2.9s;
+}
+.sobre:is(.abriendo, .abierto) ~ .portada .portada-contenido > :nth-child(4) {
+  transition-delay: 3.3s;
+}
+
+
 .portada {
   position: relative;
   min-height: 100vh;
@@ -761,26 +953,178 @@ a {
   margin-top: 24px;
 }
 
+/* Bloques que animan sus hijos en lugar de moverse completos */
+.reveal.sin-mov {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+/* Encabezado: el título se "escribe" de izquierda a derecha y la línea se abre desde el centro */
+.padrinos-encabezado {
+  margin-top: 48px;
+}
+
+.titulo-padrinos {
+  display: inline-block;
+  padding: 0 10px;
+  margin-bottom: 6px;
+  clip-path: inset(-20% 100% -20% 0);
+  filter: blur(3px);
+  transition: clip-path 1.8s cubic-bezier(0.65, 0, 0.35, 1), filter 1.2s ease 0.4s;
+}
+
+.padrinos-encabezado.visible .titulo-padrinos {
+  clip-path: inset(-20% -5% -20% 0);
+  filter: none;
+}
+
+.linea-padrinos {
+  position: relative;
+  display: block;
+  width: 180px;
+  height: 9px;
+  margin: 0 auto;
+}
+
+.linea-padrinos::before,
+.linea-padrinos::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  width: 50%;
+  height: 1px;
+  transform: scaleX(0);
+  transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) 1.1s;
+}
+
+.linea-padrinos::before {
+  right: 50%;
+  background: linear-gradient(90deg, transparent, var(--dorado));
+  transform-origin: right;
+}
+
+.linea-padrinos::after {
+  left: 50%;
+  background: linear-gradient(90deg, var(--dorado), transparent);
+  transform-origin: left;
+}
+
+.padrinos-encabezado.visible .linea-padrinos::before,
+.padrinos-encabezado.visible .linea-padrinos::after {
+  transform: scaleX(1);
+}
+
+/* rombo dorado al centro de la línea */
+.linea-padrinos i {
+  position: absolute;
+  top: 1px;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  margin-left: -3.5px;
+  background: var(--dorado);
+  transform: rotate(45deg) scale(0);
+  transition: transform 0.6s cubic-bezier(0.3, 1.6, 0.5, 1) 1s;
+}
+
+.padrinos-encabezado.visible .linea-padrinos i {
+  transform: rotate(45deg) scale(1);
+}
+
+/* Cada padrino: el aro se dibuja, brota el ícono, el rol se ajusta y los nombres se enfocan */
 .padrino-icono {
+  position: relative;
   display: grid;
   place-items: center;
-  width: 46px;
-  height: 46px;
+  width: 48px;
+  height: 48px;
   margin: 0 auto 10px;
-  border-radius: 50%;
-  border: 1px solid var(--dorado);
   color: var(--dorado-osc);
 }
 
-.padrino-icono svg {
-  width: 22px;
-  height: 22px;
+.padrino-icono .aro {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
 }
 
-.padrinos p:not(.etiqueta) {
+.padrino-icono .aro circle {
+  fill: none;
+  stroke: var(--dorado);
+  stroke-width: 1;
+  stroke-dasharray: 1.02;
+  stroke-dashoffset: 1.02;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.padrino-icono > svg:not(.aro) {
+  width: 22px;
+  height: 22px;
+  opacity: 0;
+  transform: scale(0.4) rotate(-20deg);
+  transition: opacity 0.6s ease 0.7s, transform 0.8s cubic-bezier(0.3, 1.5, 0.5, 1) 0.7s;
+}
+
+.padrino .etiqueta {
+  opacity: 0;
+  letter-spacing: 0.7em;
+  transition: opacity 1s ease 0.9s, letter-spacing 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) 0.9s;
+}
+
+.nombres-padrino {
   margin: 0;
   font-family: var(--font-serif), serif;
   font-size: 1.1rem;
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateY(10px);
+  transition: opacity 1s ease 1.2s, filter 1s ease 1.2s, transform 1s ease 1.2s;
+}
+
+.padrino.visible .padrino-icono .aro circle {
+  stroke-dashoffset: 0;
+}
+
+.padrino.visible .padrino-icono > svg:not(.aro) {
+  opacity: 1;
+  transform: none;
+}
+
+.padrino.visible .etiqueta {
+  opacity: 1;
+  letter-spacing: 0.32em;
+}
+
+.padrino.visible .nombres-padrino {
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .titulo-padrinos,
+  .nombres-padrino,
+  .padrino .etiqueta,
+  .padrino-icono > svg:not(.aro) {
+    clip-path: none;
+    filter: none;
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .padrino .etiqueta {
+    letter-spacing: 0.32em;
+  }
+  .padrino-icono .aro circle,
+  .linea-padrinos::before,
+  .linea-padrinos::after {
+    stroke-dashoffset: 0;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* ---------- Vestimenta ---------- */
@@ -914,6 +1258,82 @@ a {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--dorado-osc);
+}
+
+/* Lluvia de sobres: sobres dorados que caen suavemente detrás del texto */
+.lluvia {
+  position: relative;
+  padding: 10px 0 30px;
+}
+
+.lluvia > :not(.lluvia-sobres) {
+  position: relative;
+  z-index: 1;
+}
+
+.lluvia-sobres {
+  position: absolute;
+  inset: -70px -28px 0;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(transparent, #000 25%, #000 70%, transparent);
+  mask-image: linear-gradient(transparent, #000 25%, #000 70%, transparent);
+}
+
+.lluvia-sobres span {
+  position: absolute;
+  top: -30px;
+  width: calc(22px * var(--s));
+  height: calc(22px * var(--s));
+  color: var(--dorado);
+  opacity: 0;
+  animation: caer-sobre var(--t) linear var(--d) infinite;
+  animation-play-state: paused;
+}
+
+.lluvia-sobres svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  animation: vaiven-sobre calc(var(--t) / 3) ease-in-out infinite alternate;
+  animation-play-state: paused;
+}
+
+.lluvia.visible .lluvia-sobres span,
+.lluvia.visible .lluvia-sobres svg {
+  animation-play-state: running;
+}
+
+@keyframes caer-sobre {
+  0% {
+    transform: translate(0, 0) rotate(var(--r));
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.5;
+  }
+  80% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate(var(--dx), 320px) rotate(calc(var(--r) * -1));
+    opacity: 0;
+  }
+}
+
+@keyframes vaiven-sobre {
+  from {
+    transform: translateX(-7px) rotate(-6deg);
+  }
+  to {
+    transform: translateX(7px) rotate(6deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lluvia-sobres {
+    display: none;
+  }
 }
 
 /* ---------- Galería ---------- */
