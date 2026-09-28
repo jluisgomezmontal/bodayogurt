@@ -205,11 +205,12 @@ export default function Pagina() {
       {/* Regalos */}
       {visible(regalos) && (
         <Reveal as="section" className="seccion">
+          {/* orden: mensaje → Mesa de Regalos → lluvia de sobres */}
+          <p className="parrafo mensaje-regalos">{regalos.mensaje}</p>
           <div className="icono-regalos">
             <IconoRegalo />
           </div>
           <h2 className="titulo-script">{regalos.titulo}</h2>
-          <p className="parrafo">{regalos.mensaje}</p>
           {soloSobres ? (
             <Reveal className="sin-mov lluvia">
               <LluviaSobres />
