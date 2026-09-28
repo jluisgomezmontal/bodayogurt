@@ -12,26 +12,12 @@ import {
   iconoPorRol,
 } from "@/components/Iconos";
 import SobreMusica from "@/components/SobreMusica";
+import { partesFecha } from "@/lib/fecha";
 import CuentaRegresiva from "@/components/CuentaRegresiva";
 import Galeria from "@/components/Galeria";
 import BotonCopiar from "@/components/BotonCopiar";
 
 const inv = datos as Invitacion;
-
-/** Lee año/mes/día tal como vienen en el JSON, sin depender de la zona horaria del visitante. */
-function partesFecha(iso: string) {
-  const [a, m, d] = iso.slice(0, 10).split("-").map(Number);
-  const fecha = new Date(Date.UTC(a, m - 1, d));
-  const larga = new Intl.DateTimeFormat("es-MX", {
-    weekday: "long",
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
-  }).format(fecha);
-  const corta = [d, m, a].map((n) => String(n).padStart(2, "0")).join(" · ");
-  return { larga, corta };
-}
 
 function Evento({ datos, icono, adorno }: {
   datos: Lugar;

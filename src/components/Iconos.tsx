@@ -101,6 +101,14 @@ const rutas: Record<NombreIcono, React.ReactNode> = {
       <path d="M8.5 11l3.5 5 3.5-5M12 8v8M10 16h4l-1 6h-2z" />
     </>
   ),
+  acta: (
+    <>
+      <path d="M6 2h9l4 4v16H6z" />
+      <path d="M15 2v4h4" />
+      <path d="M12.5 17.5s-3.5-2.1-3.5-4.3a1.8 1.8 0 0 1 3.5-.6 1.8 1.8 0 0 1 3.5.6c0 2.2-3.5 4.3-3.5 4.3z" />
+      <path d="M9 8h4" />
+    </>
+  ),
   cojines: (
     <>
       <path d="M4 7c3-2 13-2 16 0 1.5 3 1.5 7 0 10-3 2-13 2-16 0-1.5-3-1.5-7 0-10z" />
@@ -126,6 +134,8 @@ export function iconoPorRol(rol: string): NombreIcono {
     ["pastel", "pastel"],
     ["musica", "musica"],
     ["foto", "foto"],
+    ["civil", "acta"],
+    ["acta", "acta"],
   ];
   return reglas.find(([clave]) => r.includes(clave))?.[1] ?? "anillos";
 }

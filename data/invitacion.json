@@ -41,15 +41,15 @@
     "mostrar": true,
     "titulo": "Ceremonia Religiosa",
     "lugar": "Iglesia del Señor San Marcos Evangelista",
-    "hora": "05:00 hrs P.M.",
+    "hora": "5:00 P.M.",
     "direccion": "C. Fernando Montés de Oca 144, El Cantaro, 39960 San Marcos, Gro.",
     "mapsUrl": "https://maps.app.goo.gl/Tm7ME77UzV4k7jHW8"
   },
   "recepcion": {
     "mostrar": true,
     "titulo": "Recepción",
-    "lugar": "Rancho los abuelos",
-    "hora": "07:30 hrs P.M.",
+    "lugar": "Rancho El Abuelo",
+    "hora": "7:30 P.M.",
     "direccion": "Av. El tanque, Esquina Luis Donaldo Colosio. Col. Emiliano Zapata , San Marcos, Gro",
     "mapsUrl": "https://maps.app.goo.gl/4B6ELYicZoTbNz4bA"
   },
@@ -59,10 +59,10 @@
     "titulo": "Itinerario",
     "subtitulo": "Así celebraremos juntos este día tan especial",
     "eventos": [
-      { "hora": "05:00 hrs P.M.", "evento": "Ceremonia religiosa", "icono": "iglesia", "detalle": "Iglesia del Señor San Marcos Evangelista" },
-      { "hora": "07:00 hrs P.M.", "evento": "Ceremonia Civil", "icono": "copas", "detalle": "Rancho los abuelos" },
-      { "hora": "07:30 hrs P.M.", "evento": "Recepcion", "icono": "cena" },
-      { "hora": "09:00 hrs P.M.", "evento": "Primer baile y fiesta", "icono": "musica" }
+      { "hora": "5:00 P.M.", "evento": "Ceremonia religiosa", "icono": "iglesia", "detalle": "Iglesia del Señor San Marcos Evangelista" },
+      { "hora": "7:00 P.M.", "evento": "Ceremonia Civil", "icono": "acta", "detalle": "Rancho El Abuelo" },
+      { "hora": "7:30 P.M.", "evento": "Recepción", "icono": "cena" },
+      { "hora": "9:00 P.M.", "evento": "Primer baile y fiesta", "icono": "musica" }
     ]
   },
   "familia": {
@@ -72,7 +72,7 @@
     "padresNovio": ["Lamberto Bibiano García", "María Guadalupe Garibay Villanueva"],
     "tituloPadrinos": "Y nuestros padrinos",
     "padrinos": [
-      { "rol": "Velación", "icono": "vela", "nombres": "Jorge de la Rosa Guinto & María Yordi Gutiérrez castro" },
+      { "rol": "Velación", "icono": "vela", "nombres": "Jorge de la Rosa Guinto & María Yordi Gutiérrez Castro" },
       { "rol": "Anillos", "icono": "anillos", "nombres": "Israel Bibiano Agaton & Sandra Luz Villanueva Moreno" },
       { "rol": "Arras", "icono": "arras", "nombres": "José Luis Magaña Cruz & Carolina Gallardo Solano" },
       { "rol": "Lazo", "icono": "lazo", "nombres": "Ricardo Tereza Jiménez & Guadalupe Ramírez García" }
@@ -134,5 +134,14 @@
     "mostrar": true,
     "mensaje": "Gracias por ser parte de nuestra historia y acompañarnos en el inicio de esta nueva etapa. ¡Te esperamos!",
     "firma": "Neli & José"
+  },
+  "impresa": {
+    "encabezado": "Con la bendición de Dios y de nuestros padres",
+    "mensaje": "Tenemos el honor de invitarle a la celebración de nuestro matrimonio, uniendo nuestras vidas ante Dios",
+    "versiculo": {
+      "texto": "El amor es paciente, es bondadoso; el amor nunca deja de ser.",
+      "cita": "1 Corintios 13:4, 8"
+    },
+    "textoQR": "Escanea para ver nuestra invitación digital"
   }
 }

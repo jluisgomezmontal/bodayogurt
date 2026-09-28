@@ -10,7 +10,7 @@ export type Lugar = Seccion & {
 
 export type Icono =
   | "iglesia" | "anillos" | "copas" | "cena" | "musica" | "luna" | "foto" | "pastel"
-  | "vela" | "arras" | "lazo" | "biblia" | "rosario" | "ramo" | "cojines";
+  | "vela" | "arras" | "lazo" | "biblia" | "rosario" | "ramo" | "cojines" | "acta";
 
 export type Invitacion = {
   sitio: { url?: string; titulo: string; descripcion: string; imagenCompartir: string; icono: string };
@@ -53,6 +53,13 @@ export type Invitacion = {
   galeria?: Seccion & { titulo: string; fotos: string[] };
   musica?: Seccion & { archivo: string };
   agradecimiento?: Seccion & { mensaje: string; firma: string };
+  /** Textos exclusivos de la invitación impresa (ruta /imprimir) */
+  impresa?: {
+    encabezado: string;
+    mensaje: string;
+    versiculo?: { texto: string; cita: string };
+    textoQR?: string;
+  };
 };
 
 /** Una sección se muestra si existe y no tiene `mostrar: false`. */
