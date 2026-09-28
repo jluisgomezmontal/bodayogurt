@@ -1220,7 +1220,7 @@ a {
   word-break: break-word;
 }
 
-.sobre-regalo {
+.icono-regalos {
   display: grid;
   place-items: center;
   width: 76px;
@@ -1233,13 +1233,26 @@ a {
   color: var(--dorado-osc);
 }
 
-.sobre-regalo svg {
+.icono-regalos svg {
   width: 34px;
   height: 34px;
 }
 
+.icono-sobres {
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 34px auto 4px;
+  color: var(--dorado-osc);
+}
+
+.icono-sobres svg {
+  width: 100%;
+  height: 100%;
+}
+
 .subtitulo-sobres {
-  margin: 34px 0 0;
+  margin: 0;
   font-family: var(--font-script), cursive;
   font-weight: 400;
   font-size: 1.9rem;
