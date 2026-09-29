@@ -20,7 +20,8 @@ export type Invitacion = {
   portada: { frase: string; foto?: string };
   bienvenida?: Seccion & { titulo: string; mensaje: string };
   cuentaRegresiva?: Seccion & { titulo: string };
-  pase?: Seccion & { titulo: string; personas: number; texto: string; nota?: string };
+  /** Pase para N personas. El número viene de la ruta (/pase/N); `variantes` lista los N que se generan. */
+  pase?: Seccion & { titulo: string; texto: string; variantes: number[] };
   ceremonia?: Lugar;
   recepcion?: Lugar;
   itinerario?: Seccion & {
